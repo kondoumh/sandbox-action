@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: run sandbox-action
+      uses: ./
+      id: hello
+      with:
+        who-to-greet: 'Hogeeeee'
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
